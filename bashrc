@@ -4,6 +4,10 @@ alias ls='ls --color'
 alias grep='grep --color'
 alias tailf='tail -f'
 alias gdiff='git diff --ignore-space-at-eol -b -w --ignore-blank-lines'
+alias cd1='cd ..'
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
 
 # Enable shell options
 shopt -s extglob
