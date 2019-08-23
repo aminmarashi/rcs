@@ -13,7 +13,7 @@ alias cd4='cd ../../../..'
 shopt -s extglob
 
 # To locally install things
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/.local/bin:~/bin
 
 # Git
 source ~/.bash-git-prompt/gitprompt.sh
