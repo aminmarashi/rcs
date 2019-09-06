@@ -2,8 +2,6 @@
 
 mkdir ~/bin
 
-mkdir ~/.npm-global
-
 # Proper JS tags
 git clone git@github.com:romainl/ctags-patterns-for-javascript.git ~/bin/ctags-patterns-for-javascript &&
 echo '--options=/home/amin/bin/ctags-patterns-for-javascript/ctagsrc' > ~/.ctags
