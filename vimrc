@@ -6,28 +6,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'neomake/neomake'
 Plug 'feix760/vim-javascript-gf'
-Plug 'enricobacis/vim-airline-clock'
 
 call plug#end()
 " vimplug ends
-
-" gruvbox
-syntax enable
-set background=light
-let g:gruvbox_contrast_light='hard'
-colorscheme gruvbox
-
-" vim airline
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
 
 " git gutter faster refresh
 set updatetime=100
@@ -36,11 +22,6 @@ set updatetime=100
 let g:ackprg = 'ag --ignore PlayOnLinux\* --ignore sshfs --ignore Android\* --ignore android\* --ignore run --ignore tags -if'
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
-
-" eslint via neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-" Run eslint in normal mode change, when read and write a buffer
-call neomake#configure#automake('nrw')
 
 " show the line exceeding 80 columns
 set colorcolumn=80,100
@@ -51,10 +32,6 @@ let sh_fold_enabled=1
 let perl_extended_vars=1
 let perl_fold_blocks = 1
 let perl_sync_dist=250
-
-" Fix the window size
-autocmd TermOpen * setlocal wfw
-autocmd TermOpen * setlocal wfh
 
 " Set the pwd to the current file
 autocmd BufEnter * silent! lcd %:p:h
@@ -73,12 +50,18 @@ set number
 set spell spelllang=en_us
 set termguicolors
 
+" gruvbox
+syntax enable
+set background=light
+let g:gruvbox_contrast_light='hard'
+colorscheme gruvbox
+
 " Nerd tree
 map <C-n> :NERDTreeToggle<CR>
 
 " FZF
 nnoremap <silent> <Leader>c :cd %:h<CR>
-nnoremap <silent> <Leader>f :FZF ~/git<CR>
+nnoremap <silent> <Leader>f :FZF<CR>
 nnoremap <silent> <Leader>F :FZF<CR>
 nnoremap <silent> <Leader><Leader> :Files <C-R>=expand('%:h')<CR><CR>
 

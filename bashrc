@@ -1,5 +1,3 @@
-alias vim=nvim
-alias vi=vim
 alias ls='ls --color'
 alias grep='grep --color'
 alias tailf='tail -f'
@@ -13,7 +11,7 @@ alias cd4='cd ../../../..'
 shopt -s extglob
 
 # To locally install things
-export PATH=$PATH:~/.local/bin:~/bin
+export PATH=$PATH:~/.local/bin:~/bin:~/.meteor
 
 # Git
 source ~/.bash-git-prompt/gitprompt.sh
@@ -21,4 +19,3 @@ source ~/bin/git-completion.bash
 
 # Private functionality
 source ~/.bash_private
-
