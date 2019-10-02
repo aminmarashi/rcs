@@ -11,9 +11,9 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'feix760/vim-javascript-gf'
+Plug 'farmergreg/vim-lastplace'
 
 call plug#end()
-" vimplug ends
 
 " git gutter faster refresh
 set updatetime=100
@@ -25,13 +25,6 @@ nnoremap <Leader>a :Ack!<Space>
 
 " show the line exceeding 80 columns
 set colorcolumn=80,100
-
-" folding
-let perl_fold=1
-let sh_fold_enabled=1
-let perl_extended_vars=1
-let perl_fold_blocks = 1
-let perl_sync_dist=250
 
 " Set the pwd to the current file
 autocmd BufEnter * silent! lcd %:p:h
@@ -61,7 +54,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 " FZF
 nnoremap <silent> <Leader>c :cd %:h<CR>
-nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> <Leader>f :FZF ~/git<CR>
 nnoremap <silent> <Leader>F :FZF<CR>
 nnoremap <silent> <Leader><Leader> :Files <C-R>=expand('%:h')<CR><CR>
 
@@ -82,3 +75,5 @@ nnoremap <silent> w <C-W>
 
 " Security
 set nomodeline
+
+" set shellcmdflag=-ic
