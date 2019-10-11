@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir ~/bin
+touch ~/.bash_private
 
 # Proper JS tags
 git clone git@github.com:romainl/ctags-patterns-for-javascript.git ~/bin/ctags-patterns-for-javascript &&
@@ -16,7 +17,11 @@ git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt -
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-
 # NVM for local node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+git config --global core.excludesfile ~/.gitignore
+
+source ~/.bashrc
+
 nvm install node
