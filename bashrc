@@ -6,6 +6,7 @@ alias cd1='cd ..'
 alias cd2='cd ../..'
 alias cd3='cd ../../..'
 alias cd4='cd ../../../..'
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage'
 
 # Enable shell options
 shopt -s extglob
