@@ -12,11 +12,18 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'feix760/vim-javascript-gf'
 Plug 'farmergreg/vim-lastplace'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
+packadd! matchit
+
 " git gutter faster refresh
 set updatetime=100
+
+set backupcopy=yes
 
 " ack.vim
 let g:ackprg = 'ag --ignore PlayOnLinux\* --ignore sshfs --ignore Android\* --ignore android\* --ignore run --ignore tags -if'
@@ -45,7 +52,7 @@ set termguicolors
 
 " gruvbox
 syntax enable
-set background=light
+set background=dark
 let g:gruvbox_contrast_light='hard'
 colorscheme gruvbox
 
