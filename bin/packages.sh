@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo apt-get install -y curl git silversearcher-ag vim-gtk
+sudo apt-get install -y curl git vim silversearcher-ag vim-gtk
