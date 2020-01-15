@@ -61,7 +61,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 " FZF
 nnoremap <silent> <Leader>c :cd %:h<CR>
-nnoremap <silent> <Leader>f :FZF ~/git<CR>
+nnoremap <silent> <Leader>f :FZF ~/devel<CR>
 nnoremap <silent> <Leader>F :FZF<CR>
 nnoremap <silent> <Leader><Leader> :Files <C-R>=expand('%:h')<CR><CR>
 
