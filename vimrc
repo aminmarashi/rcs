@@ -13,8 +13,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'feix760/vim-javascript-gf'
 Plug 'farmergreg/vim-lastplace'
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 
 call plug#end()
 
