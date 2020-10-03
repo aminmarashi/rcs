@@ -1,4 +1,4 @@
 #!/bin/bash
-for i in *rc; do
+for i in gitignore *rc; do
     cp $i ~/.$i
 done
