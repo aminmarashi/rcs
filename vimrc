@@ -15,6 +15,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'vimlab/split-term.vim'
 
 call plug#end()
 
@@ -61,12 +62,14 @@ map <C-n> :NERDTreeToggle<CR>
 
 " FZF
 nnoremap <silent> <Leader>c :cd %:h<CR>
-nnoremap <silent> <Leader>f :FZF ~/devel<CR>
+nnoremap <silent> <Leader>f :FZF /home/git/regentmarkets<CR>
 nnoremap <silent> <Leader>F :FZF<CR>
 nnoremap <silent> <Leader><Leader> :Files <C-R>=expand('%:h')<CR><CR>
 
 " Open a new tab
-nnoremap <silent> <Leader>t :tabe<CR>
+set splitright
+set splitbelow
+nnoremap <silent> <Leader>t :15Term<CR>
 
 " Open a new small terminal window
 nnoremap <silent> <Leader>T <C-W>s10<C-W>+<C-W>j:term<CR>:startinsert<CR>
@@ -84,3 +87,20 @@ nnoremap <silent> w <C-W>
 set nomodeline
 
 " set shellcmdflag=-ic
+
+" nvim
+if has('nvim')
+    tnoremap <C-w>h <C-\><C-n><C-w>h
+
+    tnoremap <C-w>j <C-\><C-n><C-w>j
+
+    tnoremap <C-w>k <C-\><C-n><C-w>k
+
+    tnoremap <C-w>l <C-\><C-n><C-w>l
+
+    augroup TerminalStuff
+       au!
+      autocmd TermOpen * setlocal nonumber norelativenumber
+    augroup END
+endif
+
