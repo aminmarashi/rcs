@@ -16,15 +16,15 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vimlab/split-term.vim'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
-packadd! matchit
+" Airline
+let g:airline_extensions = []
 
 " git gutter faster refresh
 set updatetime=100
-
-set backupcopy=yes
 
 " ack.vim
 let g:ackprg = 'ag --ignore PlayOnLinux\* --ignore sshfs --ignore Android\* --ignore android\* --ignore run --ignore tags -if'
@@ -62,7 +62,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 " FZF
 nnoremap <silent> <Leader>c :cd %:h<CR>
-nnoremap <silent> <Leader>f :FZF /home/git/regentmarkets<CR>
+nnoremap <silent> <Leader>f :FZF ~/git<CR>
 nnoremap <silent> <Leader>F :FZF<CR>
 nnoremap <silent> <Leader><Leader> :Files <C-R>=expand('%:h')<CR><CR>
 
@@ -82,6 +82,9 @@ vnoremap <silent> <Leader>s ::w !say&<CR><CR>
 
 " Change the window leader key to w
 nnoremap <silent> w <C-W>
+
+" Tags
+set tags=/home/git/tags
 
 " Security
 set nomodeline
