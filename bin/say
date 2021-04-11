@@ -1,5 +1,5 @@
 #!/bin/bash
 
-split -t, --filter="split -t. -C200 --filter=\"curl -sG --data-urlencode q@- -A b 'http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us'  |mpg123 -q --stereo - 2>/dev/null\""
+split -t, --filter="split -t. -C200 --filter=\"curl -m2 -sG --data-urlencode q@- -A b 'http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us'  |mpg123 -d2 -q --stereo -\""
 
 # sample text
