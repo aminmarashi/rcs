@@ -1,5 +1,7 @@
 #!/bin/bash
 
-split -t, --filter="split -t. -C200 --filter=\"curl -m2 -sG --data-urlencode q@- -A b 'http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us'  |mpg123 -d2 -q --stereo -\""
+# split -t, --filter="split -t. -C200 --filter=\"curl -m2 -sG --data-urlencode q@- -A b 'http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us'  |mpg123 -d2 -q --stereo -\""
+
+echo "$@" | split -C200 -t. --filter='curl -m2 -sG --data-urlencode q@- -A b "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us" | cvlc --rate 1.4 --play-and-exit -'
 
 # sample text
