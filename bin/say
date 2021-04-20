@@ -2,6 +2,6 @@
 
 # split -t, --filter="split -t. -C200 --filter=\"curl -m2 -sG --data-urlencode q@- -A b 'http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us'  |mpg123 -d2 -q --stereo -\""
 
-echo "$@" | tr . "\n" | tr \; "\n" | tr : "\n" | split -C150 --filter='curl -m2 -sG --data-urlencode q@- -A b "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us" | cvlc --rate 1.4 --play-and-exit - &>/dev/null'
+echo "$@" | tr . "\n" | tr \; "\n" | tr : "\n" | tr , "\n" | split -C150 --filter='xargs | tee /dev/stderr | curl -m2 -sG --data-urlencode q@- -A b "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us" | cvlc --rate 1.3 --play-and-exit - &>/dev/null'
 
 # sample text
