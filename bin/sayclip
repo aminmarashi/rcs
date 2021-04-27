@@ -1,5 +1,11 @@
 #!/bin/bash
 
+## Needs cvlc and curl installed
+if ! (which cvlc >/dev/null && which curl >/dev/null); then
+  echo 'Please make sure cvlc and curl are installed and added to the execution path'
+  exit 1;
+fi
+
 say() {
   echo "$@" | tr . "\n" | tr \; "\n" | tr : "\n" | tr , "\n" | \
   split -C200 --filter='tee /dev/stderr | curl -m2 -sG --data-urlencode q@- -A b "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us" | cvlc --rate 1.2 --play-and-exit - &>/dev/null'
@@ -16,7 +22,3 @@ while :; do
     say $text;
   fi;
 done
-
-# #!/bin/bash
-# prev=$(xclip -o -select clipboard);
-# while :; do sleep 0.5; text=$(xclip -o -select clipboard); if [ "$prev" == "$text" ];then continue; else prev="$text"; say $text; fi; done
