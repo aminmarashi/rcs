@@ -6,6 +6,8 @@ if ! (which cvlc >/dev/null && which curl >/dev/null); then
   exit 1;
 fi
 
+pgrep sayclip | grep -v $$ && echo There seems to be another instance of $0 running, exiting... && exit 0
+
 say() {
   echo "$@" | tr . "\n" | tr \; "\n" | tr : "\n" | tr , "\n" | \
   split -C200 --filter='tee /dev/stderr | curl -m2 -sG --data-urlencode q@- -A b "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us" | cvlc --rate 1.2 --play-and-exit - &>/dev/null'
