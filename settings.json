@@ -2,27 +2,44 @@
     "workbench.colorTheme": "Visual Studio Dark",
     "vim.foldfix": true,
     "explorer.confirmDelete": false,
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
+    // "[jsonc]": {
+    //     "editor.defaultFormatter": "vscode.json-language-features"
+    // },
     "files.insertFinalNewline": true,
     "debug.javascript.autoAttachFilter": "onlyWithFlag",
     "explorer.confirmDragAndDrop": false,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "window.zoomLevel": 2,
+    // "typescript.updateImportsOnFileMove.enabled": "always",
+    // "javascript.updateImportsOnFileMove.enabled": "always",
     "extensions.ignoreRecommendations": true,
     "github.copilot.enable": {
-        "*": true
+        "*": true,
+        "yaml": true,
+        "plaintext": false,
+        "markdown": true
     },
     "editor.inlineSuggest.enabled": true,
     "git.confirmSync": false,
     "git.autofetch": true,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    },
     "editor.fontFamily": "MonoLisa",
     "editor.lineHeight": 0,
     "editor.fontLigatures": true,
-    "editor.fontSize": 16
+    "editor.fontSize": 14,
+    // "dart.flutterSdkPath": "/Users/amin/devel/flutter",
+    // "[dart]": {
+    //     "editor.formatOnSave": true,
+    //     "editor.formatOnType": true,
+    //     "editor.rulers": [
+    //         80
+    //     ],
+    //     "editor.selectionHighlight": false,
+    //     "editor.suggest.snippetsPreventQuickSuggestions": false,
+    //     "editor.suggestSelection": "first",
+    //     "editor.tabCompletion": "onlySnippets",
+    //     "editor.wordBasedSuggestions": false
+    // },
+    "git.enableSmartCommit": true,
+    "editor.minimap.autohide": true,
+    "window.zoomLevel": 0.1,
+    "zenMode.fullScreen": false,
+    "zenMode.centerLayout": false
 }
