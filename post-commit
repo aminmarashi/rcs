@@ -1,0 +1,3 @@
+#!/bin/sh
+
+GIT_DIR=.git.no-hooks git commit --amend --allow-empty --no-verify --no-edit --date "$(date +%Y-%m-%d) 00:00:00+0000"
