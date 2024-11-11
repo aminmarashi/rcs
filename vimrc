@@ -49,7 +49,6 @@ autocmd BufNewFile,BufRead *.js  setlocal suffixesadd=.js
 set ts=4 sts=4 sw=4 expandtab
 set number
 set spell spelllang=en_us
-set termguicolors
 
 " gruvbox
 syntax enable
