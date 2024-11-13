@@ -17,6 +17,7 @@ Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vimlab/split-term.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
