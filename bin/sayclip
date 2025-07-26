@@ -1,7 +1,9 @@
-# Set the PATH to include your virtualenv and common locations like Homebrew's
+# Set the PATH to include your tools (Homebrew, venv)
+
 export PATH="/usr/local/bin:/opt/homebrew/bin:/Users/amin/virtenv/bin:$PATH"
 
-# 1. pandoc reads the selected text (from stdin), cleans it, and pipes it out.
-# 2. The $(cat -) reads pandoc's output and uses it for the --text argument.
-# 3. Mozilla tts generates the audio and pipes it to the play command.
-pandoc -f markdown -t plain --wrap=none | tts --text "$(cat -)" --model_name tts_models/en/ljspeech/vits --pipe_out | play -
+# Chime for immediate feedback
+
+afplay /System/Library/Sounds/Ping.aiff &
+
+pandoc -f markdown -t plain --wrap=none | tts --text "$(cat -)" --model_name tts_models/en/ljspeech/vits --pipe_out | mpv --force-window --demuxer-lavf-format=s16le --demuxer-lavf-o=sample_rate=22050,channels=1 -
