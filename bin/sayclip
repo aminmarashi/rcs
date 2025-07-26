@@ -1,26 +1,7 @@
-#!/bin/bash
+# Set the PATH to include your virtualenv and common locations like Homebrew's
+export PATH="/usr/local/bin:/opt/homebrew/bin:/Users/amin/virtenv/bin:$PATH"
 
-## Needs cvlc and curl installed
-if ! (which cvlc >/dev/null && which curl >/dev/null); then
-  echo 'Please make sure cvlc and curl are installed and added to the execution path'
-  exit 1;
-fi
-
-pgrep sayclip | grep -v $$ && echo There seems to be another instance of $0 running, exiting... && exit 0
-
-say() {
-  echo "$@" | tr . "\n" | tr \; "\n" | tr : "\n" | tr , "\n" | \
-  split -C200 --filter='tee /dev/stderr | curl -m2 -sG --data-urlencode q@- -A b "http://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=En-us" | cvlc --rate 1.2 --play-and-exit - &>/dev/null'
-}
-
-prev=$(xclip -o -select clipboard);
-while :; do
-  sleep 0.5;
-  text=$(xclip -o -select clipboard);
-  if [ "$prev" == "$text" ]; then
-    continue;
-  else
-    prev="$text";
-    say $text;
-  fi;
-done
+# 1. pandoc reads the selected text (from stdin), cleans it, and pipes it out.
+# 2. The $(cat -) reads pandoc's output and uses it for the --text argument.
+# 3. Mozilla tts generates the audio and pipes it to the play command.
+pandoc -f markdown -t plain --wrap=none | tts --text "$(cat -)" --model_name tts_models/en/ljspeech/vits --pipe_out | play -
