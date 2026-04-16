@@ -6,7 +6,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -18,8 +17,12 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'vimlab/split-term.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'xafron-bv/tts', { 'rtp': 'tts-vim' }
 
 call plug#end()
+
+" Avoid hanging with large TS files on mac
+set re=2
 
 " --- vim-airline ---
 " Status line at the bottom of the window
@@ -33,20 +36,16 @@ let g:airline_extensions = []
 "   <Leader>hu    undo hunk
 set updatetime=100
 
-" --- ack.vim + ripgrep (text search in files, like VSCode Cmd+Shift+F) ---
-"   <Leader>a     search across files using ripgrep with live fzf preview
-"   :Ack! <pat>   search via ack.vim quickfix list
-let g:ackprg = 'rg --vimgrep --smart-case'
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Rg<Space>
+" --- ripgrep + fzf.vim (text search in files, like VSCode Cmd+Shift+F) ---
+"   <Leader>a     interactive project search using ripgrep
+"   :RG <pat>     live-updating search across files
+set grepprg=rg\ --vimgrep\ --smart-case
+nnoremap <Leader>a :RG<Space>
 
 " --- General vim settings ---
 " show the line exceeding 80 columns
 " set colorcolumn=80,100
 set colorcolumn=
-
-" Set the pwd to the current file
-autocmd BufEnter * silent! lcd %:p:h
 
 set autoindent
 set smartindent
@@ -55,9 +54,15 @@ set nocursorline
 " set cursorcolumn
 set nocursorcolumn
 set wrap
-autocmd BufNewFile,BufRead *.tt  setlocal syntax=html
-autocmd BufNewFile,BufRead *.sql setlocal syntax=sql
-autocmd BufNewFile,BufRead *.js  setlocal suffixesadd=.js
+
+augroup VimrcFileBehavior
+  au!
+  " Only change the local cwd for real files; skip plugin/help/terminal buffers.
+  autocmd BufEnter * if expand('%:p') !=# '' && isdirectory(expand('%:p:h')) | execute 'lcd ' . fnameescape(expand('%:p:h')) | endif
+  autocmd BufNewFile,BufRead *.tt  setlocal syntax=html
+  autocmd BufNewFile,BufRead *.sql setlocal syntax=sql
+  autocmd BufNewFile,BufRead *.js  setlocal suffixesadd=.js
+augroup END
 
 set ts=4 sts=4 sw=4 expandtab
 set number
@@ -112,9 +117,6 @@ nnoremap <silent> <Leader>T <C-W>s10<C-W>+<C-W>j:term<CR>:startinsert<CR>
 " --- General mappings ---
 "   <Leader>w     save the current file
 nnoremap <silent> <Leader>w :w<CR>
-
-"   <Leader>s     say the selected text (visual mode, macOS)
-vnoremap <silent> <Leader>s ::w !say&<CR><CR>
 
 " --- Window management (like VSCode Cmd+\ to split, Cmd+1/2/3) ---
 " 'w' is remapped to Ctrl-W, so window commands become:
