@@ -18,6 +18,7 @@ Plug 'vimlab/split-term.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'xafron-bv/tts', { 'rtp': 'tts-vim' }
+Plug 'xafron-bv/vim-ai'
 
 call plug#end()
 
