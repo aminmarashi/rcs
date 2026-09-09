@@ -1,14 +1,13 @@
 # rcs
 
-Personal dotfiles: vim configuration plus a vendored
-[LazyVim](https://www.lazyvim.org/) setup, so the whole editor environment
-reproduces on a new machine.
+Personal dotfiles: vim configuration plus
+[LazyVim](https://www.lazyvim.org/) customizations.
 
 ```
 README.md     this file
 vimrc         the vim config (-> ~/.vimrc)
 nvim/         shim so plain nvim reuses ~/.vimrc
-nvim-lazy/    full LazyVim config (run via NVIM_APPNAME=nvim-lazy)
+lazyvim/      LazyVim customizations
 ```
 
 ## Plain vim
@@ -38,19 +37,12 @@ cp nvim/init.vim ~/.config/nvim/init.vim
 
 ## LazyVim
 
-The `nvim-lazy/` directory is a self-contained LazyVim config. Install it
-under its own [`NVIM_APPNAME`](https://neovim.io/doc/user/starting.html#$NVIM_APPNAME)
-so it does not clash with a plain nvim setup:
+The `lazyvim/` directory contains custom plugin overrides for an existing
+LazyVim configuration. Copy its `lua` directory into that configuration:
 
 ```sh
-cp -R nvim-lazy ~/.config/nvim-lazy
-NVIM_APPNAME=nvim-lazy nvim
+cp -R lazyvim/lua/. ~/.config/nvim/lua/
 ```
 
-On first launch LazyVim restores the exact pinned plugin versions from
-`nvim-lazy/lazy-lock.json`. To keep `NVIM_APPNAME=nvim-lazy` out of every
-invocation, add an alias to your shell rc:
-
-```sh
-alias lvim='NVIM_APPNAME=nvim-lazy nvim'
-```
+Start Neovim normally, or use the `NVIM_APPNAME` assigned to your LazyVim
+configuration.
