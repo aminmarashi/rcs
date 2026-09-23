@@ -1,14 +1,17 @@
 # LazyVim customizations
 
-This directory contains personal plugin overrides for an existing LazyVim
-configuration.
+This directory contains personal plugin overrides and enables the TypeScript
+and Rust extras for an existing LazyVim configuration.
 
-To use these files, copy or link the contents of this directory into the
-LazyVim configuration's `lua` directory:
+Copy the plugin override into the LazyVim configuration's `lua` directory:
 
 ```sh
 cp -R lazyvim/lua/. ~/.config/nvim/lua/
 ```
+
+Enable `lang.typescript` and `lang.rust` with `:LazyExtras`. For a new LazyVim
+configuration, you can copy `lazyvim/lazyvim.json` to `~/.config/nvim/` instead.
+Rust support also requires `rust-analyzer` on your `PATH`.
 
 Then start the configuration with:
 

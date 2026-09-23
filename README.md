@@ -37,12 +37,17 @@ cp nvim/init.vim ~/.config/nvim/init.vim
 
 ## LazyVim
 
-The `lazyvim/` directory contains custom plugin overrides for an existing
-LazyVim configuration. Copy its `lua` directory into that configuration:
+The `lazyvim/` directory contains custom plugin overrides and enables the
+TypeScript and Rust extras for an existing LazyVim configuration. Copy the
+plugin override into that configuration:
 
 ```sh
 cp -R lazyvim/lua/. ~/.config/nvim/lua/
 ```
+
+Enable `lang.typescript` and `lang.rust` with `:LazyExtras`. For a new LazyVim
+configuration, you can copy `lazyvim/lazyvim.json` to `~/.config/nvim/` instead.
+Rust support also requires `rust-analyzer` on your `PATH`.
 
 Start Neovim normally, or use the `NVIM_APPNAME` assigned to your LazyVim
 configuration.
