@@ -1,13 +1,14 @@
 # rcs
 
-Personal dotfiles: vim configuration plus
-[LazyVim](https://www.lazyvim.org/) customizations.
+Personal dotfiles: vim configuration,
+[LazyVim](https://www.lazyvim.org/) customizations, and revdiff defaults.
 
 ```
 README.md     this file
 vimrc         the vim config (-> ~/.vimrc)
 nvim/         shim so plain nvim reuses ~/.vimrc
 lazyvim/      LazyVim customizations
+revdiff/      revdiff configuration
 ```
 
 ## Plain vim
@@ -37,9 +38,11 @@ cp nvim/init.vim ~/.config/nvim/init.vim
 
 ## LazyVim
 
-The `lazyvim/` directory contains custom plugin overrides and enables the
-TypeScript and Rust extras for an existing LazyVim configuration. Copy the
-plugin override into that configuration:
+The `lazyvim/` directory contains custom options and plugin overrides and enables
+the TypeScript and Rust extras for an existing LazyVim configuration. It disables
+animations and relative line numbers at startup, keeping absolute line numbers.
+Copy the customizations into that configuration (merge `lua/config/options.lua`
+if you already have custom options):
 
 ```sh
 cp -R lazyvim/lua/. ~/.config/nvim/lua/
@@ -51,3 +54,16 @@ Rust support also requires `rust-analyzer` on your `PATH`.
 
 Start Neovim normally, or use the `NVIM_APPNAME` assigned to your LazyVim
 configuration.
+
+## revdiff
+
+The `revdiff/config` file hides the file tree sidebar at startup. For a new
+configuration:
+
+```sh
+mkdir -p ~/.config/revdiff
+cp revdiff/config ~/.config/revdiff/config
+```
+
+If a configuration already exists, merge `no-tree = true` into it to preserve
+other settings such as the theme. Press `t` to toggle the sidebar during a review.
