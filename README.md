@@ -1,14 +1,14 @@
 # rcs
 
 Personal dotfiles: vim configuration,
-[LazyVim](https://www.lazyvim.org/) customizations, and revdiff defaults.
+[LazyVim](https://www.lazyvim.org/) customizations, and the Hunk review setup.
 
 ```
 README.md     this file
 vimrc         the vim config (-> ~/.vimrc)
 nvim/         shim so plain nvim reuses ~/.vimrc
 lazyvim/      LazyVim customizations
-revdiff/      revdiff configuration
+hunk/         Hunk configuration
 ```
 
 ## Plain vim
@@ -55,15 +55,33 @@ Rust support also requires `rust-analyzer` on your `PATH`.
 Start Neovim normally, or use the `NVIM_APPNAME` assigned to your LazyVim
 configuration.
 
-## revdiff
+## Hunk
 
-The `revdiff/config` file hides the file tree sidebar at startup. For a new
-configuration:
+[Hunk](https://hunk.dev) is the diff viewer for agent reviews. The
+`hashimoto-review` skill in `marashiai/skills` opens a review and applies numbered
+notes in the order Hunk shows them, so `}` and `{` step through the notes in
+sequence. Hunk's `review-note-navigator` example extension lists every note on
+`F8`.
 
-```sh
-mkdir -p ~/.config/revdiff
-cp revdiff/config ~/.config/revdiff/config
-```
+1. Install Hunk:
+   ```sh
+   brew install hunk
+   ```
+2. Install the note navigator from the Hunk release you installed (`v0.22.0`
+   here):
+   ```sh
+   dir=~/.config/hunk/extensions/review-note-navigator
+   mkdir -p "$dir"
+   for file in package.json index.ts; do
+     curl -fsSL "https://raw.githubusercontent.com/modem-dev/hunk/v0.22.0/examples/extensions/review-note-navigator/$file" \
+       -o "$dir/$file"
+   done
+   ```
+3. Copy the configuration into place, or merge it into an existing one:
+   ```sh
+   mkdir -p ~/.config/hunk
+   cp hunk/config.toml ~/.config/hunk/config.toml
+   ```
 
-If a configuration already exists, merge `no-tree = true` into it to preserve
-other settings such as the theme. Press `t` to toggle the sidebar during a review.
+Hunk captures the mouse; hold Shift while selecting in Ghostty to select note
+text, for example for text-to-speech.
